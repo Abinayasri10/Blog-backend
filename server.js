@@ -51,7 +51,7 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // CORS Configuration
-const allowedOrigins = ["http://localhost:3000", "http://localhost:5173"]
+const allowedOrigins = ["http://localhost:3000", "http://localhost:5173",  "https://blog-frontend-zmgz.onrender.com"]
 app.use(
   cors({
     origin: (origin, callback) => {
