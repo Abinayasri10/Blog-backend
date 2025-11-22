@@ -47,7 +47,7 @@ const __dirname = path.dirname(__filename)
 // Create uploads directory
 const uploadsDir = path.join(__dirname, "Uploads")
 if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(UploadsDir, { recursive: true })
+  fs.mkdirSync(uploadsDir, { recursive: true })
 }
 
 // CORS Configuration
