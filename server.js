@@ -55,8 +55,13 @@ if (!fs.existsSync(uploadsDir)) {
 // CORS (simple and reliable)
 app.use(cors({
   origin: true,
-  credentials: true
+  credentials: true,
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
+  allowedHeaders: ["Content-Type","Authorization"]
 }))
+
+app.options('*', cors())
+
 
 // const allowedOrigins = ["http://localhost:3000", "http://localhost:5173",  "https://blog-frontend-zmgz.onrender.com"]
 // app.use(
