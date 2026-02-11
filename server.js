@@ -51,21 +51,28 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // CORS Configuration
-const allowedOrigins = ["http://localhost:3000", "http://localhost:5173",  "https://blog-frontend-zmgz.onrender.com"]
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true)
-      } else {
-        callback(new Error("Not allowed by CORS"))
-      }
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-)
+
+// CORS (simple and reliable)
+app.use(cors({
+  origin: true,
+  credentials: true
+}))
+
+// const allowedOrigins = ["http://localhost:3000", "http://localhost:5173",  "https://blog-frontend-zmgz.onrender.com"]
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true)
+//       } else {
+//         callback(new Error("Not allowed by CORS"))
+//       }
+//     },
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   })
+// )
 
 // Middleware
 app.use(cookieParser())
@@ -157,7 +164,7 @@ process.on("SIGINT", async () => {
 
 // Start Server
 const PORT = process.env.PORT || 5000
-app.listen(PORT, () => {
+app.listen(PORT,"0.0.0.0", () => {
   console.log(`🚀 Server running on port ${PORT}`)
   console.log("Environment check:")
   console.log("- NODE_ENV:", process.env.NODE_ENV || "development")
